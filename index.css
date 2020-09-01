@@ -1,0 +1,21 @@
+.centro{
+    text-align: center;
+    font-weight: 400;
+}
+
+.alinhamento {
+    text-align: center;
+}
+
+#dados{
+    cursor: text;
+}
+
+#lavel{
+    cursor: pointer;
+}
+
+.input-group-text {
+    color: white;
+    background: rgb(143, 150, 136);
+}
