@@ -246,9 +246,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", filtra_repeticao[i])
             let coluna_Criada = cria_InsereCelula("td", vet_contador[i])
-            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i])
+            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
             let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-            let indice_Fac = cria_InsereCelula("td", freq_Fac[i])
+            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
         
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
@@ -369,10 +369,10 @@ function calcular() {     //Funca
                     let Celula_Criada = cria_InsereCelula("td", array_ordinal[j].dado)
                     freqNome_ordenado.push(array_ordinal[j].dado)
                     let coluna_Criada = cria_InsereCelula("td", array_ordinal[j].quantidade)
-                    let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[j])
+                    let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[j].toFixed(1) + "%")
                     ordenaPorcent_grafic.push(porcent_Simples[j]) // linha de c]ódigo que ordena a porcentagem no grafico da ordinal
                     let indice_freqAcumu = cria_InsereCelula("td", freq_ord[i])
-                    let indice_Fac = cria_InsereCelula("td", freq_Fac[i])
+                    let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
                     linha_Body.appendChild(Celula_Criada )
                     linha_Body.appendChild(coluna_Criada )
                     linha_Body.appendChild(indice_PorcSimples)
@@ -473,9 +473,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", filtra_repeticao[i])
             let coluna_Criada = cria_InsereCelula("td", vet_contador[i])
-            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i])
+            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
             let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-            let indice_Fac = cria_InsereCelula("td", freq_Fac[i])
+            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
         
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
@@ -635,9 +635,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", (cria_intervalo[i] + "|--" + cria_intervalo[i + 1]))
             let coluna_Criada = cria_InsereCelula("td", Contfrequi_Conti[i])
-                let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i])
+                let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
                 let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-                let indice_Fac = cria_InsereCelula("td", freq_Fac[i])
+                let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
             
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
