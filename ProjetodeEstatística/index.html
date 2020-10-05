@@ -11,6 +11,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     <title>Menu</title>
 
     <link rel="stylesheet" href="index.css">
@@ -52,7 +54,7 @@
                          
                     <label for="dados">Dados a ser inseridos</label>
                     <input class="form-control" id="dados_inseridos" type="text" placeholder="Insira os dados seguidos de ;">
-
+                
                 </div>                              <!------------------------ F I M -------------------------------->
 
                 <p class="centro">Ou</p>
@@ -65,32 +67,62 @@
                 <div class="bg-light mt-4">
 
                     <div class="alinhamento">
-                            <div class="btn btn-outline-dark  mr-4">Amostra</div>
-                            <span>Ou</span>
-                            <div class="btn btn-outline-dark  ml-4">População</div>
+                        <form class="form-group" id="Amos_Popu">
+                            <input type="radio" name="amostra ou populacao" value="amostra"> Amostra
+                            <input type="radio" name="amostra ou populacao" value="populacao"> População
+                        </form>
                     </div>
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label for="tipo_variavel">Tipo da sua Variável</label>
-                    <select name="" id="tipo_variavel" class="form-control" >
-                        <option  name="qualitativa" value="nominal ">Qualitativa Nominal</option>
+                    <select name="" id="tipo_variavel" class="form-control"  onclick="verifica_ordinal()" >
+                        <option  name="qualitativa" value="nominal">Qualitativa Nominal</option>
                         <option  name="qualitativa" value="ordinal">Qualitativa Ordinal</option>
-                        <option  name="quantitativa" value="dicreta">Quantitativa Discreta</option>
+                        <option  name="quantitativa" value="discreta">Quantitativa Discreta</option>
                         <option  name="quantitativa" value="continua">Quantitativa Continua</option>
                     </select>
+
+                    <div id="ordinal_principal">
+                        
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <p>Medidas Separatrizes</p>
+
+                    <div class="form-group form-inline col-sm-6">
+                        
+                        <select class="form-control" name="" id="seleciona_Medida" onclick="funcMedidas_separa()">
+                            <option name="qualitativa" value="selecione">selecione</option>
+                            <option name="qualitativa" value="quartil">Quartil</option>
+                            <option name="qualitativa" value="quintil">Quintil</option>
+                            <option name="quantitativa" value="decil">Decil</option>
+                            <option name="quantitativa" value="porcentil">Porcentil</option>
+                        </select>
+
+                        <select class="form-control ml-2" name="" id="seleciona_Valor">
+                            <option value="">Escolha o valor</option>
+                        </select>
+    
+                        
+
+                    </div>
+
+
                 </div>
 
                 <div>
-                    <button onclick="calcular()" type="button">Calcular</button>
+                    <button type="button" class="btn btn-outline-primary" onclick="calcular()">Calcular</button>
                 </div>
             </form>        
         </div>
     </section>
 
     <section>
-        <h1 class="tituloTabela">Tabela de exemplo</h1>
+        <h3 class="tituloTabela"></h3>
         <table id="tabela-descritiva" class="table table-dark">
             <!--
                 <thead>
@@ -104,6 +136,57 @@
         </table>
     </section>
 
+
+    <section>
+        <h3 class="titulo_tabela2"></h3>
+        <table id="tabela2_tendencias" class="table table-dark">
+            <!--
+                <thead>
+                    <tr>
+                        <td>
+                        <td>
+                        <td>        
+                    </tr>
+                <thead>
+            -->
+        </table>
+    </section>
+
+    <section>
+        <h3 class="titulo_tabela3"></h3>
+        <table id="tabela3_separatrizes" class="table table-dark">
+            <!--
+                <thead>
+                    <tr>
+                        <td>
+                        <td>
+                        <td>        
+                    </tr>
+                <thead>
+            -->
+        </table>
+    </section>
+
+    <section>
+        <h3 class="titulo_tabela4"></h3>
+        <table id="tabela4_desvio" class="table table-dark">
+            <!--
+                <thead>
+                    <tr>
+                        <td>
+                        <td>
+                        <td>        
+                    </tr>
+                <thead>
+            -->
+        </table>
+    </section>
+
+    <section style="width: 100%; height: 300px; background-color: antiquewhite;">
+        <canvas id="myChart" style="width: 100%; height: 100%;">
+
+        </canvas>
+    </section>
 
 
     <!-- JavaScript (Opcional) -->

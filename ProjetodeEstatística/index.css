@@ -1,0 +1,127 @@
+body{
+    background-color: rgb(168, 168, 168);
+}
+
+.centro{
+    text-align: center;
+    font-weight: 400;
+}
+
+.alinhamento {
+    text-align: center;
+}
+
+#dados{
+    cursor: text;
+}
+
+#lavel{
+    cursor: pointer;
+}
+
+.input-group-text {
+    color: white;
+    background: rgb(143, 150, 136);
+}
+
+
+
+td {
+  font-weight: bold; 
+  
+}
+
+
+
+
+
+
+/* 
+//Inserido elementos
+
+// console.log(tbody)                                                                           // 
+                                                                                                // 
+// console.log(lista_DeDados)                                                                   //
+//var x = []                                                                                    // 
+                                                                                                // 
+// dados_Utilizados2 = document.getElementById("dados_inseridos").value                         //     
+                                                                                                // 
+// x = dados_Utilizados2.split(";")                                                             // 
+                                                                                                // 
+// for (i = 0; i < lista_DeDados.length; i++) {                                                 //     
+//     var x =  lista_DeDados                                                                   // 
+//     let contador = 1                                BACK-UP DE OUTRA LOGICA PARA O CALCULO   // 
+                                                                                                // 
+//     for (j = (i + 1); j < x.length; j++){                                                    // 
+//         if (lista_DeDados[i] == x[j]){                                                       // 
+//             contador += 1                                                                    //         
+                                                                                                // 
+//         }                                                                                    // 
+//         else{                                                                                //     
+//             contador = 0                                                                     // 
+//         }                                                                                    // 
+                                                                                                // 
+//     // console.log("O i na posicao : " + lista_DeDados[i] + " repete : " + contador)         // 
+//     }                                                                                        //                         
+
+// var lista_DeDados = []                            // 9-    Captura dados inseridos, para coloca-los em linhas
+
+// dados_Utilizados = document.getElementById("dados_inseridos").value
+
+// lista_DeDados = dados_Utilizados.split(";")      
+// lista_DeDados.sort()                             //Captura dados inseridos, para coloca-los em linhas
+
+
+//                                   // 10-    Calcula a quantidade de repeticoes  e 
+// var x = 0                                                 // insere na linha e na coluna
+// var vet_contador = []
+// var porcent_Simples = [] 
+// var total_Freq = 0
+// var freq_Acumulada = []
+// var freq_Fac = []
+
+// for (let i = 0; i < lista_DeDados.length; i = x) {  
+//     let freqCont = 1
+//     let frequi_porcent = 0
+
+//     for (x = i + 1; x < lista_DeDados.length; x++) { 
+//         if (lista_DeDados[i] == lista_DeDados[x]) {
+//             freqCont++;
+            
+//         } else {
+//         break;
+//         }
+
+//     }
+
+//     vet_contador.push(freqCont)
+//     total_Freq += freqCont 
+//     freq_Acumulada.push(total_Freq)
+
+    
+// }
+
+// var freqAcuPorcent = 0 
+// for(let i = 0; i < vet_contador.length; i++) {
+//     let vazia = 0
+
+//     vazia = (vet_contador[i] * 100) / total_Freq
+//     freqAcuPorcent += vazia
+
+//     porcent_Simples.push(vazia)
+//     freq_Fac.push(freqAcuPorcent)
+
+// }
+
+
+// console.log("oi " + freq_Fac)
+
+
+// // O que foi inserido no thead esta a cima  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FIM ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+// var lista_DeDados = []                            // 9-    Captura dados inseridos, para coloca-los em linhas
+
+// dados_Utilizados = document.getElementById("dados_inseridos").value
+
+// lista_DeDados = dados_Utilizados.split(";")      
+// lista_DeDados.sort()                             //Captura dados inseridos, para coloca-los em linhas */
