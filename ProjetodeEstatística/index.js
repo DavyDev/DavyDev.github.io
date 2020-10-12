@@ -1281,8 +1281,8 @@ function calcular() {     //Funca
         meio = (total_dasFreqSi / 2).toFixed(0)
 
     
-
-    
+        
+        
                 
         for(let i = 0; i < freq_Acumulada.length; i++){
             // if(meio > freq_Acumulada[i] && meio <= freq_Acumulada[i + 1]){
@@ -1295,7 +1295,13 @@ function calcular() {     //Funca
             if((meio > freq_Acumulada[i]) && (meio <= freq_Acumulada[i + 1])){
                 fimd = Contfrequi_Conti[i + 1]
                 fant = freq_Acumulada[i]
-        
+
+                
+            }
+
+            if (fant == 0) {
+                fant = 0
+                fimd = Contfrequi_Conti[0]
             }
         }
         for(let i = 0; i < Contfrequi_Conti.length; i++){
@@ -1304,6 +1310,10 @@ function calcular() {     //Funca
                 aux_i = cria_intervalo[i]
             }
         }
+
+        console.log("meio : " + meio)
+        console.log("fant : " + fant)
+        console.log("fimd : " + fimd)
 
         //............................................Calculo
             mediana = (aux_i + (((meio - fant) / fimd) * intervalo) )
@@ -1557,7 +1567,7 @@ function calcular() {     //Funca
                 }
             }  
 
-             if ( intervalo_I === 0) {
+            if ( intervalo_I === 0) {
                 intervalo_I = cria_intervalo[0]
                 fant = 0
             }
@@ -1580,13 +1590,24 @@ function calcular() {     //Funca
             for(let i = 0; i < freq_Acumulada.length; i++){
                 if((posicao_separatriz > freq_Acumulada[i]) && (posicao_separatriz <= freq_Acumulada[i + 1])) {
                     intervalo_I = cria_intervalo[i + 1]
+                    fant = freq_Acumulada[i]
+                    fimd = Contfrequi_Conti[i + 1]
                     break
                 }
             }  
 
+            if (posicao_separatriz < freq_Acumulada[i]) {
+                intervalo_I = cria_intervalo[0]
+                fant = 0
+                fimd = Contfrequi_Conti[0]
+            }
+
             resultado = (intervalo_I + (((posicao_separatriz - fant) / fimd) * intervalo) )
 
-            console.log(resultado) 
+            console.log("meio : " + posicao_separatriz)
+            console.log("i : " + intervalo_I)
+            console.log("fant : " + fant)
+            console.log("fimd : " + fimd)
             
             
         }
@@ -1816,6 +1837,12 @@ function calcular() {     //Funca
 
 //INICIO Graficos--------------------------------------------------------------------------------------------------------
     
+    var chart_atributos =  document.getElementById("chart_atributos")
+    var myChart_atributos = document.getElementById("myChart")
+
+    chart_atributos.setAttribute("style", "width: 100%; height: 300px; background-color: antiquewhite;")
+    myChart_atributos.setAttribute("style", "width: 100%; height: 100%;")
+
     if (tipo_variavel.value === "nominal") {
 
         document.getElementById('myChart').innerHTML = ''
@@ -1824,7 +1851,7 @@ function calcular() {     //Funca
         
 
         let meu_grafico = new Chart (ctx, {
-            type : "bar",
+            type : "pie",
             data : {
                 labels : filtra_repeticao,
                 datasets: [
@@ -1880,7 +1907,7 @@ function calcular() {     //Funca
         
 
         let meu_grafico = new Chart (ctx, {
-            type : "bar",
+            type : "pie",
             data : {
                 labels : array_input,
                 datasets: [
@@ -2015,7 +2042,11 @@ function calcular() {     //Funca
                             '#ce4257'
                         ],
                         borderWidth : 2,
-                        width : 5
+                        
+                        width : 5 ,
+
+                        
+                        
 
 
                     }
@@ -2025,10 +2056,17 @@ function calcular() {     //Funca
                 title : {
                     text : "Grafico do Dados",
                     display : true,
-                    fontSize : 25
+                    fontSize : 25,
+                    
                 },
                 
                 scales : {
+                    xAxes : [
+                        {
+                            barPercentage: 1.25,
+                            
+                        }
+                    ],
                     yAxes : [
                         {
                             ticks : {
