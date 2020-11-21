@@ -64,7 +64,7 @@ nav.navbar-transparente {
 
 @font-face {
     font-family: "font_Oficial";
-    src: url("/fonts/OfficialBook.ttf");
+    src: url("./fonts/OfficialBook.ttf");
 }
 
 #logo{
@@ -79,17 +79,22 @@ nav.navbar-transparente {
 }
 
 .descritiva-text{
-    font-family:"font_Oficial";
+    font-family: "font_Oficial";
     color: #fff;
     
+}
+
+
+#descritiva{
+    text-align: center;
 }
 
 .aumenta-font{
     font-size: 19px;
 }
 
-.btn_1{
-    background-color: rgb(89, 222, 255);;
+#btn_1{
+    background-color: rgb(178,255,89);;
     font-family: "font_Oficial";
     color: rgb(70, 65, 65);
     letter-spacing: 1px;
@@ -97,7 +102,41 @@ nav.navbar-transparente {
     
 }
 
-.btn_1:hover{
+#btn_1:hover{
+    background-color:  rgba(150, 255, 30, 0.863);
+    font-family: "font_Oficial";
+    transform: translate(-50, -50);
+    color: rgb(70, 65, 65);
+    font-weight: bold;
+}
+
+#btn_2{
+    background-color: rgb(178,255,89);;
+    font-family: "font_Oficial";
+    color: rgb(70, 65, 65);
+    letter-spacing: 1px;
+    font-weight: bold;
+    
+}
+
+#btn_2:hover{
+    background-color:  rgba(150, 255, 30, 0.863);
+    font-family: "font_Oficial";
+    transform: translate(-50, -50);
+    color: rgb(70, 65, 65);
+    font-weight: bold;
+}
+
+#btn_3{
+    background-color: rgb(178,255,89);;
+    font-family: "font_Oficial";
+    color: rgb(70, 65, 65);
+    letter-spacing: 1px;
+    font-weight: bold;
+    
+}
+
+#btn_3:hover{
     background-color:  rgba(150, 255, 30, 0.863);
     font-family: "font_Oficial";
     transform: translate(-50, -50);
@@ -107,15 +146,6 @@ nav.navbar-transparente {
 
 
 
-.font_customizada {
-    font-family: 'MADE Evolve Sans EVO';
-    font-size: 60px;
-    color: #fff;
 
-}
 
-.label_customizada {
-    color:rgba(0, 0, 0, 0.87);
-    font-size: 17px;
-    font-weight: 500;
-}
+

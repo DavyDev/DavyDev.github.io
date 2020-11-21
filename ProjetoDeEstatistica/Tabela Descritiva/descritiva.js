@@ -1,10 +1,18 @@
 
+
+
+//Esta Variavel pega o ID de uma div que recebera mais tags HTML com conteudos após a funcão Calcular ser chamada
 var div_ordinal = document.getElementById("ordinal_principal")
 
+//Esta Variavel pega o ID de uma div que contem as opções do tipo de variavel
 var tipo_ordenal = document.getElementById("tipo_variavel")
 
+//Esta Variavel pega o ID de uma div que recebera mais tags HTML com conteudos após a funcão Calcular ser chamada
 var medidas_separatrizes = document.getElementById("seleciona_Valor")
+//___________________________________________________________________________________________________________________________
 
+
+//Variavel que recebe os dados captados e acumulados da opçao Qualitativa Ordenal na linha 359
 var objeto_ordinal = function (dado, quantidade, freqporcent, freacumulada, freqAcumuPorcent) {
 
     this.dado = dado
@@ -14,19 +22,26 @@ var objeto_ordinal = function (dado, quantidade, freqporcent, freacumulada, freq
     this.freqAcumuPorcent = freqAcumuPorcent
     
 }
+//____________________________________________________________________________________________________________________________
 
-
+//Vetor que recebe dados de valores acumulados da opçao Qualitativa Ordenal
 array_ordinal = []
-array_Continua = []
-array_input = []
 
+//Vetor que recebe dados de valores acumulados da opçao Quantitativa Continua
+array_Continua = []
+
+//Vetor que recebe dados de valores inseridos de um input que sera inserido no HTML na opção Quarilativa Ordinal
+array_input = []
+//____________________________________________________________________________________________________________________________
+
+//Função que executa sua função de inserir um input na opção Quarilativa Ordinal
 function verifica_ordinal() {
 
     if (tipo_ordenal.value === "ordinal") {
 
         insere_input = document.createElement("input")
         insere_input.setAttribute("type", "text" )
-        insere_input.setAttribute("class", "form-control-sm" )
+        insere_input.setAttribute("class", "form-control mt-2" )
         insere_input.setAttribute("placeholder", "Digite a ordem dos dados" )
         insere_input.setAttribute("id", "ordena_ordinal" )
 
@@ -35,7 +50,9 @@ function verifica_ordinal() {
     }
 }
 console.log(div_ordinal)
+//____________________________________________________________________________________________________________________________
 
+//Função que ao selecionar uma medida separatriz no HTML insere no id(seleciona_Valor) os respectivos valores para o usuario escolher
 function funcMedidas_separa() {
     if(seleciona_Medida.value === 'selecione') {
         document.getElementById('seleciona_Valor').innerHTML = ''
@@ -87,23 +104,23 @@ function funcMedidas_separa() {
     }
 
 }
+//____________________________________________________________________________________________________________________________
 
+// Inicio Tabelas------------------------------------------------------------------------------------------------------------
 
-
-
-
-function calcular() {     //Funca
+//Função principal do código, que realiza todos os calculos e chama e ultiliza o valor de todas as outras funções dispoiveis
+function calcular() {     
     
 
     // Tabelas------------------------------------------------------------------------------------------------------------------
     
     nome_Variavel = document.getElementById("nome_da_varialvel").value
     let titulos = document.querySelector(".tituloTabela")
-    document.getElementById("tabela-descritiva").innerHTML = ""  // 1-    Limpa tabela
+    document.getElementById("tabela-descritiva").innerHTML = ""  // Linha limpa tabela toda vez que calculamos 
     let tabela = document.getElementById("tabela-descritiva")
     
     
-    
+    //Função que cria botão com o respectivo atributo e valor 
     function cria_Btn(botão, atributo, valor){
 
         botão = document.createElement(botão)
@@ -112,69 +129,107 @@ function calcular() {     //Funca
 
         return botão
     }
+    //_______________________________________________________________________________________________________________________
     
-    function criaElementoTab (elemento) {        // 2-    Funçào que cria elementos para ser adicionado na tabela
+    //Funçào que cria elementos HTML para ser adicionado na criação das tabelas
+    function criaElementoTab (elemento) {        
         return document.createElement(elemento)
-    }                                            //Funçào que cria elementos para ser adicionado na tabela
+    }                 
+    //_______________________________________________________________________________________________________________________                          
 
     let thead = criaElementoTab("thead")         //                         ^
     let tbody = criaElementoTab("tbody")         //                         |                                          
-    let tfoot = criaElementoTab("tfoot")         // 3-    Armazenando elementos criados na função a cima, em variaveis
+    let tfoot = criaElementoTab("tfoot")         //Armazenando elementos criados na função a cima, em variaveis
 
-        tabela.appendChild(thead)                     // 8-    Inserido elementos
-        tabela.appendChild(tbody)
+        tabela.appendChild(thead)
+        tabela.appendChild(tbody)                //Inserido elementos
         tabela.appendChild(tfoot)
 
-    let indices_tabela = [nome_Variavel, "Frequência", "Frequência (%)", "Frequência Acumulada", "FAC (%)"]  // 4-     Indices da tabela
+    //Indices de todas as tabelas 
+    let indices_tabela = [nome_Variavel, "Frequência", "Frequência (%)", "Frequência Acumulada", "FAC (%)"]  
 
       
-
-    function cria_InsereCelula (tag, text) {     // 5-    Função cria a tag desejada e insere o valor dentro da tag
+    //Função cria a tag desejada e insere o valor dentro da tag
+    function cria_InsereCelula (tag, text) {     
         tag = criaElementoTab(tag)
         tag.textContent = text
         return tag
-    }                                            // Função cria a tag desejada e insere o valor dentro da tag
-    
-    function criaIntervalo_Insere (tag, tag_2) {     // 5-    Função cria a tag desejada e insere o valor dentro da tag
+    }              
+    //_________________________________________________________________________________________________________________________
+
+    //Função que cria a tag desejada e insere o valor dentro da tag
+    function criaIntervalo_Insere (tag, tag_2) {     
         tag = criaElementoTab(tag)
         tag.textContent = tag_2
         return tag
-    }  
+    }
+    //_________________________________________________________________________________________________________________________  
 
-
-    let tr = criaElementoTab("tr")            // 6-    É criado a linha para que o elementos a baixo sejam inderidos
-                                              //                                    |            
-                                              //                                    v  
-
-    for(i = 0; i < indices_tabela.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+    //É criado a linha para que o elementos a baixo sejam inderidos
+    let tr = criaElementoTab("tr")            
+                                                      
+    
+    // Este "for", faz com que seja criado as colunas referente aos indices
+    for(i = 0; i < indices_tabela.length; i++) {   
 
         let td = cria_InsereCelula("td", indices_tabela[i] )
         tr.appendChild(td) 
-    }                                              //Este "for", faz com que seja criado as colunas referente aos indices
-                        
+    }
+    //_________________________________________________________________________________________________________________________  
+               
     
     
     var lista_DeDados = []   
     
+    //Variavel que recebe todos os dados inseridos pelo usuario para calculos da Estatistica Descritiva
     dados_Utilizados = document.getElementById("dados_inseridos").value
 
+    //Linha que faz a quebra de dos dados inseridos pelo usuario
     lista_DeDados = dados_Utilizados.split(";")      
-    lista_DeDados.sort() 
+   
+  //BLOCO DE CÒDIGO REFERENTE A FUNÇÂO DE OEDENAÇÂO (SELECTION SORT)+++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+    function encontraMenor_val (vetor, inicio) {
+        ponto_inicial = inicio
+        for(let i = inicio + 1; i < vetor.length; i ++){
+            if(vetor[ponto_inicial] > vetor[i]){
+                ponto_inicial = [i]
+            }
+        }
+        return ponto_inicial
+    }
 
 
+
+    function selection_Sort (vetor) {
+        for(let i = 0; i < vetor.length - 1; i++){
+            let Val_menor = (encontraMenor_val(vetor, i + 1))
+            if(vetor[Val_menor] < vetor[i]){
+                [vetor[i], vetor[Val_menor]] = [vetor[Val_menor], vetor[i]]
+
+                
+            }
+
+        }
+    }
+    selection_Sort (lista_DeDados)
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //Variaveis que serão usadas para armazenar Frequências
     var x = 0                                                
     var vet_contador = []
     var porcent_Simples = [] 
     var total_Freq = 0
     var freq_Acumulada = []
     var freq_Fac = []
-    var total_dasFi = 0 //linha para calculos do desvios padroes e CVs
+    //--------------------------------------------
+    //linha para calculos do desvios padroes e CVs
+    var total_dasFi = 0 
+    //_______________________________________________________________________________________________________________________
 
-
-    var tipo_variavel = document.getElementById("tipo_variavel")
-
-    //-----------------Validação dos tipos  de Variaveis------------------------------------------------------------------------
     
+    //-----------------Validação dos tipos  de Variaveis------------------------------------------------------------------------
+    var tipo_variavel = document.getElementById("tipo_variavel")
+        
     if((tipo_variavel.value === 'nominal' || tipo_variavel.value === 'ordinal')  && !isNaN(lista_DeDados[0])){
         alert("Ops! Esta variável só aceita palavras");
         document.getElementById("tabela-descritiva").innerHTML = ""
@@ -184,16 +239,15 @@ function calcular() {     //Funca
         alert("Ops! Esta variável só aceita palavras");
         document.getElementById("tabela-descritiva").innerHTML = ""
     }
-    
+    //_______________________________________________________________________________________________________________________
 
-    //-----------------Validação dos tipos  de Variaveis------------------------------------------------------------------------
+//\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/  INICIO CRIAÇÃO DE TABELAS  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\
 
-
-    // Se a tabela for Nominal________________________________________________________________________________________________
+    // (1) Se a tabela for Nominal________________________________________________________________________________________________
     
     if (tipo_variavel.value === "nominal") {
 
-    //----------------------------------------------Bloco de códigos que acham as Frequências Ordinal    
+    //------------------------------------------------------------Bloco de códigos que acham as Frequências Nominal    
 
         for (let i = 0; i < lista_DeDados.length; i = x) {  
                 let freqCont = 1
@@ -228,11 +282,11 @@ function calcular() {     //Funca
 
         }
         
-    //----------------------------------------------Bloco de códigos que acham as Frequências Ordinal
+    //---------------------------------------------------------------Bloco de códigos que acham as Frequências Ordinal
         
         var filtra_repeticao = [ ...new Set( lista_DeDados ) ];  //Filtra as repetições deixando apena um item de cada//
     
-    //----------------------------------------------Insere a tabela no DOM   
+    //---------------------------------------------------------------------------Insere a tabela no DOM   
 
         thead.appendChild(tr)   //Linha universal dos indices da tabela //
 
@@ -246,9 +300,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", filtra_repeticao[i])
             let coluna_Criada = cria_InsereCelula("td", vet_contador[i])
-            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
+            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(0) + "%")
             let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
+            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(0) + "%")
         
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
@@ -258,26 +312,26 @@ function calcular() {     //Funca
             
             
 
-            tbody.appendChild(linha_Body)                  // 10-    Calcula a quantidade de repeticoes  e // insere na linha e na coluna
+            tbody.appendChild(linha_Body) // 10-    Calcula a quantidade de repeticoes  e insere na linha e na coluna
             var x = 0      
         
-        //----------------------------------------------Insere a tabela no DOM   
+        //---------------------------------------------------------------------------Insere a tabela no DOM  
         }
         
         
     }
 
-    // Se a tabela for Nominal________________________________________________________________________________________________
+    // (1) Se a tabela for Nominal________________________________________________________________________________________________
 
 
 
-    // Se a tabela for Ordinal________________________________________________________________________________________________
+    // (2) Se a tabela for Ordinal________________________________________________________________________________________________
     
     
     
     if (tipo_variavel.value === "ordinal") {
     
-    //----------------------------------------------Bloco de códigos que acham as Frequências Ordinal
+    //------------------------------------------------------------Bloco de códigos que acham as Frequências Ordinal
 
         for (let i = 0; i < lista_DeDados.length; i = x) {  
                 let freqCont = 1
@@ -312,10 +366,10 @@ function calcular() {     //Funca
             freq_Fac.push(freqAcuPorcent)
 
         }
+        //---------------------------------------------------------Bloco de códigos que acham as Frequências Ordinal
         
         
-        
-        filtra_repeticao = [ ...new Set( lista_DeDados ) ];  //Filtra as repetições deixando apena um item de cada//
+        filtra_repeticao = [ ...new Set( lista_DeDados ) ];  //Filtra as repetições deixando apenas um item de cada//
 
         let pega_valor = document.getElementById("ordena_ordinal").value
 
@@ -353,8 +407,9 @@ function calcular() {     //Funca
             
         }
     }
+    //----------------------------------------------Bloco de códigos que acham as Frequências Ordinal 
 
-    //----------------------------------------------Insere a tabela no DOM   
+    //---------------------------------------------------------------------------Insere a tabela no DOM
         thead.appendChild(tr)   //Linha universal dos indices da tabela //
 
         var ordenaPorcent_grafic = []
@@ -371,10 +426,10 @@ function calcular() {     //Funca
                     let Celula_Criada = cria_InsereCelula("td", array_ordinal[j].dado)
                     freqNome_ordenado.push(array_ordinal[j].dado)
                     let coluna_Criada = cria_InsereCelula("td", array_ordinal[j].quantidade)
-                    let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[j].toFixed(1) + "%")
+                    let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[j].toFixed(0) + "%")
                     ordenaPorcent_grafic.push(porcent_Simples[j]) // linha de c]ódigo que ordena a porcentagem no grafico da ordinal
                     let indice_freqAcumu = cria_InsereCelula("td", freq_ord[i])
-                    let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
+                    let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(0) + "%")
                     linha_Body.appendChild(Celula_Criada )
                     linha_Body.appendChild(coluna_Criada )
                     linha_Body.appendChild(indice_PorcSimples)
@@ -388,16 +443,16 @@ function calcular() {     //Funca
             tbody.appendChild(linha_Body)
             console.log("oooooaajshhshs : " + ordenaPorcent_grafic)
 
-        //----------------------------------------------Insere a tabela no DOM   
+        //---------------------------------------------------------------------------Insere a tabela no DOM 
         }
         
 
     }
-    // Se a tabela for Ordinal________________________________________________________________________________________________
+    //(2) Se a tabela for Ordinal________________________________________________________________________________________________
 
 
 
-    // Se a tabela for Discreta________________________________________________________________________________________________
+    //(3) Se a tabela for Discreta________________________________________________________________________________________________
     
     if (tipo_variavel.value === "discreta") {
 
@@ -406,9 +461,36 @@ function calcular() {     //Funca
         let dados_Discreta = document.getElementById("dados_inseridos").value
 
         lista_dadosDiscreta = dados_Discreta.split(";")
-        lista_dadosDiscreta.sort()
 
-    //----------------------------------------------Bloco de códigos que acham as Frequências Discreta
+      //BLOCO DE CÒDIGO REFERENTE A FUNÇÂO DE OEDENAÇÂO (SELECTION SORT)+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        function encontraMelor_val (vetor, inicio) {
+            ponto_inicial = inicio
+            for(let i = inicio + 1; i < vetor.length; i ++){
+                if(vetor[ponto_inicial] > vetor[i]){
+                    ponto_inicial = [i]
+                }
+            }
+            return ponto_inicial
+        }
+    
+    
+    
+        function selecton_Sort (vetor) {
+            for(let i = 0; i < vetor.length - 1; i++){
+                let Val_menor = (encontraMelor_val(vetor, i + 1))
+                if(vetor[Val_menor] < vetor[i]){
+                    [vetor[i], vetor[Val_menor]] = [vetor[Val_menor], vetor[i]]
+    
+                    
+                }
+    
+            }
+        }
+        selecton_Sort (lista_dadosDiscreta)
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //----------------------------------------------------------------Bloco de códigos que acham as Frequências Discreta
 
         for (let i = 0; i < lista_dadosDiscreta.length; i = x) {  
                 let freqCont = 1
@@ -439,10 +521,7 @@ function calcular() {     //Funca
         for(let i = 0; i < vet_contador.length; i++) {
             fre_simples.push(vet_contador[i])
         }
-
-    //linha de código referente ao calculo do desvio padrão
-
-
+    //_______________________________________________________________________________________________________________________
 
         var freqAcuPorcent = 0 
         
@@ -460,7 +539,6 @@ function calcular() {     //Funca
     //----------------------------------------------Bloco de códigos que acham as Frequências Discreta
         
         
-        
         filtra_repeticao = [ ...new Set( lista_dadosDiscreta ) ];  //Filtra as repetições deixando apena um item de cada//
 
     //----------------------------------------------Insere a tabela no DOM    
@@ -475,9 +553,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", filtra_repeticao[i])
             let coluna_Criada = cria_InsereCelula("td", vet_contador[i])
-            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
+            let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(0) + "%")
             let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
+            let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(0) + "%")
         
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
@@ -485,16 +563,16 @@ function calcular() {     //Funca
             linha_Body.appendChild(indice_freqAcumu)
             linha_Body.appendChild(indice_Fac)
 
-            tbody.appendChild(linha_Body)                  // 10-    Calcula a quantidade de repeticoes  e // insere na linha e na coluna
+            tbody.appendChild(linha_Body)                  //Calcula a quantidade de repeticoes  e // insere na linha e na coluna
                
         //----------------------------------------------Insere a tabela no DOM
         }
         
     }
-    // Se a tabela for Discreta________________________________________________________________________________________________
+    //(3) Se a tabela for Discreta________________________________________________________________________________________________
 
 
-    // Se a tabela for Continua________________________________________________________________________________________________
+    //(4) Se a tabela for Continua________________________________________________________________________________________________
     if (tipo_variavel.value === "continua") {
     
     //-------------------------------------------Achando o maior e o menor numero      
@@ -518,26 +596,41 @@ function calcular() {     //Funca
         // console.log(lista_NumeContinua)
         console.log(lista_NumeContinua)
 
-        var maior_Numero = lista_NumeContinua[0]
-        var menor_Numero = lista_NumeContinua[0]
+        var maior_Numero 
+        var menor_Numero 
 
-        
+        //BLOCO DE CÒDIGO REFERENTE A FUNÇÂO BUSCA SEQUÊNCIAL ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        function encontra_Maior (vetor, inicio) {
+            ponto_inicial = inicio
+            for(let i = inicio + 1; i < vetor.length; i ++){
+                if(vetor[ponto_inicial] < vetor[i]){
+                    ponto_inicial = [i]
+                }
+            }
+            return ponto_inicial
+        }
+
+        function encontra_Menor (vetor, inicio) {
+            ponto_inicial = inicio
+            for(let i = inicio + 1; i < vetor.length; i ++){
+                if(vetor[ponto_inicial] > vetor[i]){
+                    ponto_inicial = [i]
+                }
+            }
+            return ponto_inicial
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
-        for (let i = 0; i < lista_NumeContinua.length; i++) {
+        let indice_maior = (encontra_Maior(lista_NumeContinua, 0))
+        let indice_menor = (encontra_Menor(lista_NumeContinua, 0))
 
-            if (lista_NumeContinua[i] >= maior_Numero){
-                maior_Numero = lista_NumeContinua[i]
-            }
-        }
+        maior_Numero = lista_NumeContinua[indice_maior]
+        menor_Numero = lista_NumeContinua[indice_menor]
 
-        for (let i = 0; i < lista_NumeContinua.length; i++) {
-
-            if (menor_Numero > lista_NumeContinua[i]){
-                menor_Numero = lista_NumeContinua[i]
-            }
-        }
+        console.log(maior_Numero)
+        console.log(menor_Numero)
         
-    //-------------------------------------------Achando o maior e o menor numero    
+    //_______________________________________________________________________________Achando o maior e o menor numero    
 
     //-------------------------------------------Amplitude total
 
@@ -545,7 +638,7 @@ function calcular() {     //Funca
 
         console.log("Amplitude" + amplitude_total)
         
-    //-------------------------------------------Amplitude total  
+    //___________________________________________Amplitude total  
         
     //-------------------------------------------Quantidade de classe(linha)
         var k = Math.round(Math.sqrt(lista_NumeContinua.length)) - 1
@@ -558,15 +651,14 @@ function calcular() {     //Funca
                 amplitude_total += 1
             }
         }
+    //_______________________________________________________________________    
             
 
     //------------------------------------------Intervalo    
 
         var intervalo = (amplitude_total / k)
 
-        
-
-    //------------------------------------------Intervalo    
+    //___________________________________________________    
 
     
     //-----------------------------------Cria intervalo entre os valores
@@ -588,9 +680,9 @@ function calcular() {     //Funca
 
         }
 
-    //-----------------------------------Cria intervalo entre os valores
+    //__________________________________________________________________
 
-    //----------------------------------------------Bloco de códigos que acham as Frequências Continua
+    //----------------------------------------------Bloco de códigos que acham as Frequências da tabela Continua
         var Contfrequi_Conti = []
         var frequi_Continua = []
 
@@ -625,7 +717,7 @@ function calcular() {     //Funca
             freq_Fac.push(freqAcuPorcent)
 
         }
-    //----------------------------------------------Bloco de códigos que acham as Frequências Continua
+    //__________________________________________________________Bloco de códigos que acham as Frequências da tabela Continua
 
     //----------------------------------------------Insere a tabela no DOM
 
@@ -637,9 +729,9 @@ function calcular() {     //Funca
 
             let Celula_Criada = cria_InsereCelula("td", (cria_intervalo[i] + "|--" + cria_intervalo[i + 1]))
             let coluna_Criada = cria_InsereCelula("td", Contfrequi_Conti[i])
-                let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(1) + "%")
+                let indice_PorcSimples = cria_InsereCelula("td", porcent_Simples[i].toFixed(0) + "%")
                 let indice_freqAcumu = cria_InsereCelula("td", freq_Acumulada[i])
-                let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(1) + "%")
+                let indice_Fac = cria_InsereCelula("td", freq_Fac[i].toFixed(0) + "%")
             
             linha_Body.appendChild(Celula_Criada )
             linha_Body.appendChild(coluna_Criada )
@@ -660,14 +752,14 @@ function calcular() {     //Funca
     //----------------------------------------------Insere a tabela no DOM
     }
     
-    // Se a tabela for Continua________________________________________________________________________________________________
+    //(4) Se a tabela for Continua________________________________________________________________________________________________
 
 //\/\/\/\/\/\/\/\/\/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/  FIM CRIAÇÃO DE TABELAS  \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\
 
 
-//############################################# CRIAÇÃO DAS MEDIDAS DE TENDÊNCIA #############################################################################    
+//############################################# INICIO CRIAÇÃO DAS MEDIDAS DE TENDÊNCIA #############################################################################    
 
-    //Se a tendencias for Nominal________________________________________________________________________________________________
+    //(1.1) Se a tendencias for Nominal________________________________________________________________________________________________
     
     if (tipo_variavel.value === "nominal"){
 
@@ -677,49 +769,26 @@ function calcular() {     //Funca
         document.getElementById("tabela2_tendencias").innerHTML = ""  
         let tabela2_tendencias = document.getElementById("tabela2_tendencias")
 
-        let tipo_tendencia = ["Média", "Móda", "Mediana"]
+        let tipo_tendencia = ["Média", "Móda", "Mediana"] //linha que apresenta as tendencias
 
         let thead_tendencia = criaElementoTab("thead")
 
         tabela2_tendencias.appendChild(thead_tendencia)
-        
-        // let tbody_tendencia = criaElementoTab("tbody_tendencia")
 
-        let tr_2 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_2 = criaElementoTab("tr")        //Linha universal das tendencias da tabela 
         tr_2.setAttribute("style", "text-align: center;")
 
-        
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_tendencia[i] )
         tr_2.appendChild(td) 
 
         } 
         
-        
-        // tabela2_tendencias.appendChild(thead_tendencia)
-        // tabela2_tendencias.appendChild(tbody_tendencia)
-        // tabela2_tendencias.setAttribute("class", "espaco")
-        
-        
-        
-        // for (let i = 0; i < tipo_tendencia.length; i++) {
-
-        //     let td_tendencia = cria_InsereCelula("td", tipo_tendencia[i])
-        //     tr_2.appendChild(td_tendencia)
-        // }
-
-        // thead_tendencia.appendChild(tr_2) 
-        
-        // console.log(filtra_repeticao)
-        // console.log(vet_contador)
-
-        
         console.log(thead_tendencia)
+        //____________________________________________________________________
 
-
-
-        
     //--------------------------------------------Média nào tem
     //--------------------------------------------Média nào tem
     
@@ -743,7 +812,7 @@ function calcular() {     //Funca
             }
         }
         moda.push(maior)
-        //.................................escolhe o maior valor e coloca no vetor "moda"
+        //_______________________________________________________________________________
 
         //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
         let total_frequencia = 0
@@ -757,7 +826,7 @@ function calcular() {     //Funca
 
             total_frequencia += vet_contador[i] //linha para achar o total das frequencias
         }
-        //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
+        //_____________________________________________________________________________________________________
 
 
         //.................................................... Achar a posição das modas
@@ -783,7 +852,7 @@ function calcular() {     //Funca
         
         console.log(posicao_moda)
     
-    //.................................................... Achar a posição das modas
+    //____________________________________________________________________________________
         
     //.....................................................Pegar o valor das posicoes Moda
 
@@ -799,7 +868,7 @@ function calcular() {     //Funca
         }
 
 
-    //.....................................................Pegar o valor das posicoes da Moda
+    //____________________________________________________________________________________
 
     //......................................................mediana
     
@@ -815,9 +884,7 @@ function calcular() {     //Funca
         console.log("Moda : " + armazena_modas)
         console.log("Médiana : " + mediana)
 
-        
-
-    //......................................................mediana    
+    //_____________________________________________________________    
 
 
         let valores = ["Nào existe", armazena_modas, mediana]
@@ -825,11 +892,13 @@ function calcular() {     //Funca
         thead_tendencia.appendChild(tr_2)
         let tr_valores = criaElementoTab("tr")
         
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        // Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td_valores = cria_InsereCelula("td", valores[i] )
         tr_valores.appendChild(td_valores) 
         } 
+        //_____________________________________________________________________
 
         tr_valores.setAttribute("style", "text-align: center;")
 
@@ -838,9 +907,10 @@ function calcular() {     //Funca
 
     }    
 
-    //Se as tendencias for Nominal________________________________________________________________________________________________
+    //(1.1) Se as tendencias for Nominal________________________________________________________________________________________________
     
-     //Se as tendencias for Ordinal________________________________________________________________________________________________
+     
+    //(1.2) Se as tendencias for Ordinal________________________________________________________________________________________________
     if (tipo_variavel.value === "ordinal"){
 
         let titulo_Medidas = document.querySelector(".titulo_tabela2")
@@ -855,18 +925,18 @@ function calcular() {     //Funca
 
         tabela2_tendencias.appendChild(thead_tendencia)
         
-        // let tbody_tendencia = criaElementoTab("tbody_tendencia")
 
-        let tr_2 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_2 = criaElementoTab("tr")        //Linha universal das tendencias da tabela 
         tr_2.setAttribute("style", "text-align: center;")
 
-        
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_tendencia[i] )
         tr_2.appendChild(td) 
 
         } 
+        //____________________________________________________________________
 
     //--------------------------------------------Média nào tem
     //--------------------------------------------Média nào tem
@@ -890,7 +960,7 @@ function calcular() {     //Funca
         moda.push(maior)
 
         console.log(moda)
-    //.................................escolhe o maior valor e coloca no vetor "moda"
+    //_______________________________________________________________________________
 
     //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
         let total_frequencia = 0
@@ -906,7 +976,7 @@ function calcular() {     //Funca
         }
 
         console.log(maiores_moda)
-        //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
+        //________________________________________________________________________________________________
         
         //.................................................... Achar a posição das modas
         console.log("antes : " + total_frequencia)
@@ -931,7 +1001,7 @@ function calcular() {     //Funca
         
         console.log("Posicoes : " + posicao_moda)
     
-    //.................................................... Achar a posição das modas
+    //__________________________________________________________________________________
 
     //.....................................................Pegar o valor das posicoes Moda
 
@@ -947,7 +1017,7 @@ function calcular() {     //Funca
         }
 
     console.log("Moda : " + armazena_modas)
-    //.....................................................Pegar o valor das posicoes da Moda
+    //_____________________________________________________________________________________
     
     //......................................................mediana
     
@@ -967,7 +1037,7 @@ function calcular() {     //Funca
         console.log("Moda : " + armazena_modas)
         console.log("Médiana : " + mediana)
 
-    //......................................................mediana 
+    //_____________________________________________________________
     
         let valores = ["Nào existe", armazena_modas, mediana]
 
@@ -975,19 +1045,24 @@ function calcular() {     //Funca
         thead_tendencia.appendChild(tr_2)
         let tr_valores = criaElementoTab("tr")
         
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td_valores = cria_InsereCelula("td", valores[i] )
         tr_valores.appendChild(td_valores) 
         } 
+        //____________________________________________________________________
 
         tr_valores.setAttribute("style", "text-align: center;")
 
         thead_tendencia.appendChild(tr_valores)
     
-     //Se as tendencias for Ordinal________________________________________________________________________________________________
+     
     }
-    //Se as tendencias for Discreta________________________________________________________________________________________________
+    //(1.2) Se as tendencias for Ordinal________________________________________________________________________________________________
+
+
+    //(1.3) Se as tendencias for Discreta________________________________________________________________________________________________
     
     if (tipo_variavel.value === "discreta"){
 
@@ -1003,21 +1078,20 @@ function calcular() {     //Funca
 
         tabela2_tendencias.appendChild(thead_tendencia)
         
-        // let tbody_tendencia = criaElementoTab("tbody_tendencia")
+        
 
-        let tr_2 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_2 = criaElementoTab("tr")        //Linha universal das tendencias da tabela
         tr_2.setAttribute("style", "text-align: center;")
 
-        
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_tendencia[i] )
         tr_2.appendChild(td) 
 
         }
+        //_____________________________________________________________________
         
-
-            
 
         //--------------------------------------------Média
         var transforma_numero = []
@@ -1044,7 +1118,7 @@ function calcular() {     //Funca
         
         console.log("tete : " + transforma_numero)
 
-        //--------------------------------------------Média
+        //__________________________________________________
         
         
         //-------------------------------------------- Moda
@@ -1066,7 +1140,7 @@ function calcular() {     //Funca
                 }
             }
             moda.push(maior)
-            //.................................escolhe o maior valor e coloca no vetor "moda"
+            //________________________________________________________________________________
 
             //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
             var total_frequencia = 0
@@ -1080,7 +1154,7 @@ function calcular() {     //Funca
 
                 total_frequencia += vet_contador[i] //linha para achar o total das frequencias
             }
-            //.................................se houver repeticoes a colocamos em outro vetor sera para a posicao
+            //_____________________________________________________________________________________________________
 
 
             //.................................................... Achar a posição das modas
@@ -1106,7 +1180,7 @@ function calcular() {     //Funca
             
             console.log(posicao_moda)
         
-        //.................................................... Achar a posição das modas
+        //_________________________________________________________________________________
             
         //.....................................................Pegar o valor das posicoes Moda
 
@@ -1120,7 +1194,7 @@ function calcular() {     //Funca
                     break
                 }
             }
-        //.....................................................Pegar o valor das posicoes da Moda
+        //____________________________________________________________________________________
 
         var media = (armazena / total_frequencia).toFixed(2) //========== Linha que acha a Média da descritiva
 
@@ -1143,18 +1217,20 @@ function calcular() {     //Funca
             // console.log(transforma_numero)
             // console.log(armazena_SomaDasMulti)
             // console.log(total_frequencia)
-    //......................................................mediana    
+        //______________________________________________________________
 
         let valores = [media, armazena_modas, mediana]
             
         thead_tendencia.appendChild(tr_2)
         let tr_valores = criaElementoTab("tr")
         
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td_valores = cria_InsereCelula("td", valores[i] )
         tr_valores.appendChild(td_valores) 
         } 
+        //____________________________________________________________________
 
         tr_valores.setAttribute("style", "text-align: center;")
 
@@ -1163,8 +1239,10 @@ function calcular() {     //Funca
 
     }
 
+    //(1.3) Se as tendencias for Discreta________________________________________________________________________________________________
 
-     //Se as tendencias for Continua________________________________________________________________________________________________
+
+     //(1.4) Se as tendencias for Continua________________________________________________________________________________________________
     
      if (tipo_variavel.value === "continua"){
 
@@ -1180,20 +1258,20 @@ function calcular() {     //Funca
 
         tabela2_tendencias.appendChild(thead_tendencia)
         
-        let tr_2 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_2 = criaElementoTab("tr")        //Linha universal das tendencias da tabela
         tr_2.setAttribute("style", "text-align: center;")
 
-        
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_tendencia[i] )
         tr_2.appendChild(td) 
 
         }
+        //____________________________________________________________________
         
         console.log(tr_2)
         // console.log(vet_contador)
-
 
     //--------------------------------------------Média 
         var divisor_Intervalos = []
@@ -1236,7 +1314,7 @@ function calcular() {     //Funca
         // console.log(total_dasMulti)
         // console.log(total_dasFreqSi)
         // console.log(soma_DasMulti)
-    //--------------------------------------------Média
+    //________________________________________________
 
     
     //--------------------------------------------Moda
@@ -1276,7 +1354,7 @@ function calcular() {     //Funca
             console.log("o intervalo de tempo com maior frequencia : " + armazena_intervalModa[i] + " tem como moda : " + armazena_PontoMaior[i])
         }
 
-    //--------------------------------------------Moda
+    //___________________________________________________
 
 
     //--------------------------------------------Mediana
@@ -1287,12 +1365,7 @@ function calcular() {     //Funca
         
                 
         for(let i = 0; i < freq_Acumulada.length; i++){
-            // if(meio > freq_Acumulada[i] && meio <= freq_Acumulada[i + 1]){
-            //     fimd = freq_Acumulada[i + 1]
-            // }
-            // else{
-            //     fimd = freq_Acumulada[0]
-            // }
+            
 
             if((meio > freq_Acumulada[i]) && (meio <= freq_Acumulada[i + 1])){
                 fimd = Contfrequi_Conti[i + 1]
@@ -1317,11 +1390,11 @@ function calcular() {     //Funca
         console.log("fant : " + fant)
         console.log("fimd : " + fimd)
 
-        //............................................Calculo
+        //............................................Calculo Mediana
             mediana = (aux_i + (((meio - fant) / fimd) * intervalo) )
-        //............................................Calculo
+        //___________________________________________________________
 
-        //--------------------------------------------Mediana
+        //______________________________________________________
         
         console.log("Mediana : " + mediana)
 
@@ -1330,25 +1403,27 @@ function calcular() {     //Funca
         thead_tendencia.appendChild(tr_2)
         let tr_valores = criaElementoTab("tr")
         
-        for(i = 0; i < tipo_tendencia.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_tendencia.length; i++) {   
 
         let td_valores = cria_InsereCelula("td", valores[i] )
         tr_valores.appendChild(td_valores) 
         } 
+        //____________________________________________________________________
 
         tr_valores.setAttribute("style", "text-align: center;")
 
         thead_tendencia.appendChild(tr_valores)
     }
-    //Se as tendencias for Continua________________________________________________________________________________________________
+    //(1.4) Se as tendencias for Continua________________________________________________________________________________________________
 
 
 
-//############################################# CRIAÇÃO DAS MEDIDAS DE TENDÊNCIA #############################################################################
+//############################################# FIM CRIAÇÃO DAS MEDIDAS DE TENDÊNCIA #############################################################################
 
 
 
-//############################################# CRIAÇÃO DAS MEDIDAS SEPATATRIZES #############################################################################
+//############################################# INICIO CRIAÇÃO DAS MEDIDAS SEPATATRIZES #############################################################################
 
     if(tipo_variavel.value === 'nominal' || tipo_variavel.value === 'ordinal' || tipo_variavel.value === 'discreta'){
 
@@ -1364,23 +1439,22 @@ function calcular() {     //Funca
 
         tabela3_separatrizes.appendChild(thead_Separatriz)
 
-        let tr_3 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_3 = criaElementoTab("tr")        //Linha universal das separatrizes da tabela
         tr_3.setAttribute("style", "text-align: center;")
 
-        for(i = 0; i < tipo_Separatriz.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_Separatriz.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_Separatriz[i] )
         tr_3.appendChild(td) 
 
         }
+        //____________________________________________________________________
         console.log(tr_3)
-
-
-
 
         var posicao_separatriz = 0 
         var A_Separatriz = 0
-        
+
         if (seleciona_Medida.value === "quartil") {
 
             for(let i = 1; i <= 4; i++){
@@ -1481,11 +1555,13 @@ function calcular() {     //Funca
 
         let tr_valores = criaElementoTab("tr")
         
-        for(i = 0; i < valores.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < valores.length; i++) {   
 
         let td_valores = cria_InsereCelula("td", valores[i] )
         tr_valores.appendChild(td_valores) 
         } 
+        //____________________________________________________________________
 
         tr_valores.setAttribute("style", "text-align: center;")
 
@@ -1509,15 +1585,17 @@ function calcular() {     //Funca
 
         tabela3_separatrizes.appendChild(thead_Separatriz)
 
-        let tr_3 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_3 = criaElementoTab("tr")        //Linha universal das separatrizes da tabela
         tr_3.setAttribute("style", "text-align: center;")
 
-        for(i = 0; i < tipo_Separatriz.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_Separatriz.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_Separatriz[i] )
         tr_3.appendChild(td) 
 
         }
+        //____________________________________________________________________
 
 
 
@@ -1637,15 +1715,11 @@ function calcular() {     //Funca
 
         }
 
-        
-
         let valores = [resultado]
 
         thead_Separatriz.appendChild(tr_3)
 
         let tr_valores = criaElementoTab("tr")
-        
-          // 7-    Este "for", faz com que seja criado as colunas referente aos indices
 
         let td_valores = cria_InsereCelula("td", valores )
         tr_valores.appendChild(td_valores) 
@@ -1657,10 +1731,10 @@ function calcular() {     //Funca
 
     }
 
-//############################################# CRIAÇÃO DAS MEDIDAS SEPATATRIZES #############################################################################
+//############################################# FIM CRIAÇÃO DAS MEDIDAS SEPATATRIZES #############################################################################
 
 
-//############################################# DESVIO PADRÃO E COEFIcIENTE DE VARIAÇÃO#############################################################################
+//############################################# INICIO DESVIO PADRÃO E COEFIcIENTE DE VARIAÇÃO#############################################################################
 
 
     if (tipo_variavel.value === "discreta") {
@@ -1678,17 +1752,17 @@ function calcular() {     //Funca
 
         tabela4_desvio.appendChild(thead_Desvio)
 
-        let tr_4 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_4 = criaElementoTab("tr")        //Linha universal dos desvios da tabela
         tr_4.setAttribute("style", "text-align: center;")
 
-        for(i = 0; i < tipo_Desvio.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_Desvio.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_Desvio[i] )
         tr_4.appendChild(td) 
 
         }
-
-
+        //____________________________________________________________________
 
         var Amos_Popu = document.getElementById("Amos_Popu")
 
@@ -1708,11 +1782,6 @@ function calcular() {     //Funca
         for (i = 0; i < vars_pesquisadas.length; i++) {
             total_cima += vars_pesquisadas[i]
         }
-
-        // desvio_Pad = Math.sqrt(total_cima / total_dasFi)
-
-
-        // console.log("DP : " + desvio_Pad)
 
         if(radios[0].checked){
 
@@ -1739,8 +1808,6 @@ function calcular() {     //Funca
         thead_Desvio.appendChild(tr_4)
 
         let tr_valores = criaElementoTab("tr")
-        
-          // 7-    Este "for", faz com que seja criado as colunas referente aos indices
 
         let td_valores = cria_InsereCelula("td", valores )
         tr_valores.appendChild(td_valores) 
@@ -1768,15 +1835,17 @@ function calcular() {     //Funca
 
         tabela4_desvio.appendChild(thead_Desvio)
 
-        let tr_4 = criaElementoTab("tr")        //Linha universal -2 das tendencias da tabela //
+        let tr_4 = criaElementoTab("tr")        //Linha universal dos desvios da tabela
         tr_4.setAttribute("style", "text-align: center;")
 
-        for(i = 0; i < tipo_Desvio.length; i++) {   // 7-    Este "for", faz com que seja criado as colunas referente aos indices
+        //Este "for", faz com que seja criado as colunas referente aos indices
+        for(i = 0; i < tipo_Desvio.length; i++) {   
 
         let td = cria_InsereCelula("td", tipo_Desvio[i] )
         tr_4.appendChild(td) 
 
         }
+        //____________________________________________________________________
 
         var Amos_Popu = document.getElementById("Amos_Popu")
 
@@ -1820,8 +1889,6 @@ function calcular() {     //Funca
         thead_Desvio.appendChild(tr_4)
 
         let tr_valores = criaElementoTab("tr")
-        
-          // 7-    Este "for", faz com que seja criado as colunas referente aos indices
 
         let td_valores = cria_InsereCelula("td", valores )
         tr_valores.appendChild(td_valores) 
@@ -1835,9 +1902,9 @@ function calcular() {     //Funca
 
 // FIM Tabelas------------------------------------------------------------------------------------------------------------
 
+//############################################# FIM DESVIO PADRÃO E COEFIcIENTE DE VARIAÇÃO#############################################################################
 
-
-//INICIO Graficos--------------------------------------------------------------------------------------------------------
+//############################################# INICIO CRIAÇÂO GRAFICO #############################################################################
     
     var chart_atributos =  document.getElementById("chart_atributos")
     var myChart_atributos = document.getElementById("myChart")
@@ -2084,3 +2151,4 @@ function calcular() {     //Funca
     
 }
 
+//############################################# FIM CRIAÇÂO GRAFICO #############################################################################

@@ -15,40 +15,56 @@
 
         <title></title>
     </head>
-    <body>
-        <header id="cabeçario">       <!--Inicio do Cabeçario-->  <!--Não Finalizado-->
-            <div class="navbar navbar-expand-sm bg-dark navbar-dark">
-                <div class="container">
-                    
-                    <a href="#" class="navbar-brand">Logo</a>
-
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#menu-hamburguer">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div id="menu-hamburguer" class="collapse navbar-collapse" >
-
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"> Tipos de estatistica</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Login</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>    
-            </div>
-        </header>       <!--Fim do Cabeçario-->  <!--Não Finalizado-->
+    <body id="principal" >
+        <header><!-- inicio Cabecalho -->
+            <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
+              <div class="container">
+                
+                <a href="index.html"  class="navbar-brand" >
+                  <h3 id="logo">FlowCalc</h3>
+                </a>
+                <span><img src="/imagens/pie-chart.png" width="40px" alt=""></span>
+      
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                  <i class="fas fa-bars text-white"></i>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="nav-principal">
+                  <ul class="navbar-nav ml-auto">
+    
+                    <li class="nav-item ">
+                        <a href="/index.html" class="nav-link">Home</a>
+                    </li>
+    
+                    <li class="nav-item dropdown" >
+                        <a href="#" class="nav-link dropdown-toggle slide-left-right" data-toggle="dropdown"> Tipos de Estatistica</a>
+    
+                        <div class="dropdown-menu">
+                            <a href="/Tabela Descritiva/descritiva.html" class="dropdown-item ">Estatistica Descritiva</a>
+                            <a href="/Probabilidade/escolheProbabilidade.html" class="dropdown-item">Probabilidade</a>
+                            <a href="/Correlacao e Regrecao/Corre_Disper.html" class="dropdown-item">Correlação e Regressão</a>
+                        </div>
+                    </li>
+      
+                    <li class="nav-item divisor"></li>
+      
+                    <li class="nav-item">
+                      <a href="" class="nav-link">Inscrever-se</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">Entrar</a>
+                    </li>
+                  </ul>
+                </div>
+      
+              </div>
+            </nav>
+          </header>       <!--Fim do Cabeçario-->  <!--Não Finalizado-->
 
         <section >
             <div class="container">
-                <legend class=" mt-3 font_customizada">
-                 <h3 class="text-center font_customizada">Distribuição Normal</h3>
+                <legend class=" mt-3 descritiva-text">
+                 <h3 class="text-center display-4">Distribuição Normal</h3>
                 </legend>
 
                 <form action="">
@@ -83,7 +99,7 @@
                     </div>
                 </form>
 
-                <div class="text-center mt-4">
+                <div class="text-center mt-4 mb-4">
                     <button type="button" id="calcula" class="btn btn-outline-dark btn-lg" onclick="calcular()">Calcular</button>
                 </div>
             

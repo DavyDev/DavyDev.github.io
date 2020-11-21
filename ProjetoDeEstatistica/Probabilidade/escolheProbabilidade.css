@@ -104,18 +104,3 @@ nav.navbar-transparente {
     color: rgb(70, 65, 65);
     font-weight: bold;
 }
-
-
-
-.font_customizada {
-    font-family: 'MADE Evolve Sans EVO';
-    font-size: 60px;
-    color: #fff;
-
-}
-
-.label_customizada {
-    color:rgba(0, 0, 0, 0.87);
-    font-size: 17px;
-    font-weight: 500;
-}

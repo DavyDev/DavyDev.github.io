@@ -11,12 +11,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="binomial.css">
-
-    <title>Olá, mundo!</title>
+    <link rel="stylesheet" href="Corre_Disper.css">
+    <title>Correlacão e Dispersão</title>
   </head>
-  <body id="principal">
-    
+  <body id="principal"> 
+
     <header><!-- inicio Cabecalho -->
         <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
           <div class="container">
@@ -62,62 +61,82 @@
         </nav>
       </header>       <!--Fim do Cabeçario-->  <!--Não Finalizado-->
 
-    <div class="container " id="conteudos">
-        <legend class=" mt-3 descritiva-text">
-            <h3 class="text-center  display-4">Distribuição Binomial</h3>
-        </legend>
-    
-        <div id='formulario'>
-          <div class="form-group">
-              <label for="tam_Amostra" class="label_customizada">Amostra</label>
-              <input class="form-control" type="text" id="tam_Amostra" placeholder="Digite o tamanho da amostra">
-          </div>
-      
-          <div class="form-group">
-              <label for="sucesso_P" class="label_customizada">Sucesso</label>
-              <input class="form-control" type="number" id="sucesso_P" placeholder="Digite o Sucesso">
-          </div>
-      
-          <div class="form-group">
-              <label for="fracasso_Q" class="label_customizada">Fracasso</label>
-              <input class="form-control" type="number" id="fracasso_Q" placeholder="Digite o Fracasso">
-          </div>
-      
-          <div class="form-group">
-              <label for="evento_k" class="label_customizada">Evento</label>
-              <input class="form-control" type="text" id="evento_k" placeholder="Digite o evento">
-          </div>
-          
-          <div class="text-center mb-4 mt-4">
-            <button type="button" class= "btn btn-lg btn-outline-dark " type="button" id="calc"  value="CALCULAR" onclick="calcular()">Calcular</button>
-          </div>
-          
-        </div>
-  
-        
-        <div  class="d-flex">
-          <div class="container align-self-center">
-            <div id="coluna" class="row">
-                <div id="mostra_result">
-                </div>          
+    <section>
+
+        <div class="container">
+
+            <legend class="mt-3 descritiva-text">
+                <h3 class="text-center display-4">Correlacão e Regressão</h3>
+            </legend>
+
+            <form action="">
+                <div class="form-group">
+
+                    <label for="var_X">Variavel Independente (X)</label> 
+                    <input id="var_X" type="text" class="form-control" placeholder="Insira os valores separado por ( ; )  ">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="var_Y">Variavel Dependente (Y)</label>
+                    <input id="var_Y" type="text" class="form-control" placeholder="Insira os dados serparados po ( ; )">
+                
+                </div>
+            </form>
+
+            <div class="text-center">
+                <button class="btn btn-outline-dark btn-lg" onclick="calcular()">Calcular</button>
             </div>
-          </div>
+
         </div>
-  
-  
-  
-        
-      </div>
-      
-      
-      <footer></footer>
-  
-    
+
+    </section>
+
+    <section id="resultados" class=" text-align: center mt-4">
+
+        <div class="container">
+
+            <div class="form-row">
+                
+                <div id="" class="col">
+                    <table id="tabela" class="table  table-bordered table-dark ">
+
+                    </table>
+                </div>
+
+
+                <div id="projecao" class="form-group col">
+                    
+
+                </div>
+            
+            </div>
+
+        </div>
+
+
+            
+
+
+            
+
+                
+
+            
+
+            
+
+
+    </section>
+
+
+
 
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script src="binomial.js"></script>
+    <script src="Corre_Disper.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

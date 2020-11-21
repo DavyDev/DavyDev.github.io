@@ -11,69 +11,198 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="Pagina_Inicial.css">
 
-    <title>Menu</title>
-
-    <link rel="stylesheet" href="descritiva.css">
-
-    <style>
-        body{
-            background-image: url("../tempsnip.png");
-        }
-    </style>
     
+
+    
+    <title>Pagina Inicial</title>
+
   </head>
-  <body>
-    <header id="cabeçario">       <!--Inicio do Cabeçario-->  <!--Não Finalizado-->
-        <div class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container">
+  <body id="principal">
+    <div >
+        <header><!-- inicio Cabecalho -->
+            <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
+              <div class="container">
                 
-                <a href="#" class="navbar-brand">Logo</a>
-
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#menu-hamburguer">
-                    <span class="navbar-toggler-icon"></span>
+                <a href="index.html"  class="navbar-brand" >
+                  <h3 id="logo">FlowCalc</h3>
+                </a>
+                <span><img src="/imagens/pie-chart.png" width="40px" alt=""></span>
+      
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+                  <i class="fas fa-bars text-white"></i>
                 </button>
+      
+                <div class="collapse navbar-collapse" id="nav-principal">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown" >
+                        <a href="#" class="nav-link dropdown-toggle slide-left-right" data-toggle="dropdown"> Tipos de Estatistica</a>
 
-                <div id="menu-hamburguer" class="collapse navbar-collapse" >
-
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="./Tabela Descritiva/descritiva.html" class="nav-link"> Estatistica Descritiva</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Login</a>
-                        </li>
-                    </ul>
-
+                        <div class="dropdown-menu">
+                            <a href="/Tabela Descritiva/descritiva.html" class="dropdown-item ">Estatistica Descritiva</a>
+                            <a href="/Probabilidade/escolheProbabilidade.html" class="dropdown-item">Probabilidade</a>
+                            <a href="/Correlacao e Regrecao/Corre_Disper.html" class="dropdown-item">Correlação e Regressão</a>
+                        </div>
+                    </li>
+      
+                    <li class="nav-item divisor"></li>
+      
+                    <li class="nav-item">
+                      <a href="" class="nav-link">Inscrever-se</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">Entrar</a>
+                    </li>
+                  </ul>
                 </div>
-            </div>    
-        </div>
-    </header>
+      
+              </div>
+            </nav>
+          </header><!--/fim Cabecalho -->
+        <!--<header id="cabeçario">       
+            <div id="navegação" class="navbar navbar-expand-sm navbar-light">
+                <div class="container">
+                    
+                    <a href="#" class="navbar-brand">FlowCalc</a>
+    
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#menu-hamburguer">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div id="menu-hamburguer" class="collapse navbar-collapse" >
+    
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Home</a>
+                            </li>
 
-    <section>
+                            <li class="nav-item dropdown" >
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Tipos de Estatistica</a>
+    
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown-item">Estatistica Descritiva</a>
+                                    <a href="" class="dropdown-item">Probabilidade</a>
+                                    <a href="" class="dropdown-item">Correlação e Regressão</a>
+                                </div>
+                            </li>
+                
+                            <li class="nav-item">
+                                <a href="#" class="btn btn-outline-dark ml-4">Entrar</a>
+                            </li>
+                        </ul>
+    
+                    </div>
+                </div>    
+            </div>
+        </header>       Fim do Cabeçario  Não Finalizado -->
 
-        <div class="container">
+        <div class="container mt-4">
 
-            <div class="form-row text-center" style=" border-radius: 10px; padding: 30px 0px;;margin-top: 25%; border: solid 1px rgba(0, 0, 0, 0); background-color:rgba(0, 0, 0, 0.144);">
+            <div class="row ">
 
-                <div class="col">
-                    <a class="btn btn-dark" href="./Probabilidade/binomial.html" >Binomial</a>
+                
+                <div class="col-md-6 a d-flex" id="descritiva">
+                    
+                    <div class="align-self-center descritiva-text" >
+                        <h1 class="display-4">Estatística Descritiva</h1> 
+                        
+                        <div class="aumenta-font">
+                            A estatística descritiva, cujo objetivo básico é o de sintetizar uma série de valores de mesma natureza, permitindo dessa forma que se tenha uma visão global da variação desses valores, organiza e descreve os dados de três maneiras: por meio de tabelas, de gráficos e de medidas descritivas.
+                        </div>
+                        <div class="text-center mt-3 ">
+                            <a href="/Tabela Descritiva/descritiva.html" id="btn_1" class="btn btn-lg">Teste Agora</a>
+                        </div>
+                        
+
+                    </div>
+
+                    
+                    
+                    
                 </div>
     
-                <div  class="col">
-                    <a class="btn btn-dark" href="./Probabilidade/uniforme.html" >Uniforme</a>
+                <div class="col-md-6">
+                    <img src="./imagens/Descritiva.svg" class="img-fluid" alt="">
                 </div>
-    
-                <div  class="col">
-                    <a class="btn btn-dark" href="./Probabilidade/normal.html" >Normal</a>
-                </div>
-    
+                
             </div>
 
+            <div class="row mt-4">
+
+                <div class="col-md-6 mt-4">
+                    <img src="./imagens/Probabilidade.svg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-md-6 a d-flex" id="descritiva">
+
+                    <div class="align-self-center descritiva-text">
+                        <h1 class="display-4">Probabilidade</h1> 
+                        
+                        <div class="aumenta-font">
+                            Probabilidade é o estudo sobre experimentos que, mesmo realizados em condições bastante parecidas, apresentam resultados que não são possíveis de prever, associando números às chances de determinado resultado acontecer
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <a href="/Probabilidade/escolheProbabilidade.html" id="btn_2" class="btn btn-lg">Teste Agora</a>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row mt-4 mb-4">
+
+
+                <div class="col-md-6 a d-flex" id="descritiva">
+
+                    <div class="align-self-center descritiva-text">
+                        <h1 class="display-4">Correlação e Regressão</h1> 
+                        
+                        <div class="aumenta-font">
+                            Correlação e Regressão são duas técnicas estreitamente relacionadas, que visa
+                            estimar a relação que possa existir trazendo o graú de ralação existentes em duas variaveis trazendo consigo os metodos
+                            mais eifcientes da atualidade.
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <a href="/Correlacao e Regrecao/Corre_Disper.html" id="btn_3" class="btn btn-lg">Teste Agora</a>
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 mt-4">
+                    <img src="./imagens/Correlação Regressão.svg" class="img-fluid" alt="">
+                </div>
+                
+            </div>
+
+            
+
         </div>
+
         
-    </section>
+        
+
+            
+
+
+    </div>
+
+    
+
+    
+    
+    
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
