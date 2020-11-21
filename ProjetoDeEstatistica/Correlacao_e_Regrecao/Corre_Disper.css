@@ -65,7 +65,7 @@ nav.navbar-transparente {
 
 @font-face {
     font-family: "font_Oficial";
-    src: url("/fonts/OfficialBook.ttf");
+    src: url("../fonts/OfficialBook.ttf");
 }
 
 #logo{
