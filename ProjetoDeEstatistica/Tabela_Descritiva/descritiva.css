@@ -78,8 +78,9 @@ nav.navbar-transparente {
     
 }
 
-#descritiva-text{
-    font-family: "font_Oficial";
+.descritiva-text{
+    font-family:"font_Oficial";
+    color: #fff;
     
 }
 
