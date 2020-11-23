@@ -367,7 +367,7 @@ let desvio_pad = Number(document.getElementById("desvio_pad").value)
     insere_div.setAttribute("id", "mostra_Val")
     insere_div.setAttribute("class", " mt-4 text-center")
 
-    h2.textContent = "Probabilidade de : " + probabilidade + "%"
+    h2.textContent = "Probabilidade de : " + (probabilidade + "%")
 
     
     insere_div.appendChild(h2)
