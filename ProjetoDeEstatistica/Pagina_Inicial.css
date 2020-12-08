@@ -41,6 +41,12 @@ nav.navbar-transparente {
 	background: rgba(255, 255, 255, 0.849);
 }
 
+#footer_transparente {
+    margin: 0px;
+    padding: 15px 0px 5px 0px;
+    background: rgba(255, 255, 255, 0.849);
+}
+
 .navbar-light .navbar-nav .nav-link {
 	color: rgba(0, 0, 0, 0.658);
 }
@@ -144,7 +150,25 @@ nav.navbar-transparente {
     font-weight: bold;
 }
 
+#creator{
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
 
+footer h3{
+    font-family: "font_Oficial";
+    font-weight: bold;
+    display: inline;
+    position: relative;
+    top: 5px;
+    padding-right: 5px;
+}
+
+#year{
+    font-size: 14px;
+}
 
 
 
