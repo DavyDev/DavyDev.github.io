@@ -119,3 +119,9 @@ nav.navbar-transparente {
     font-size: 17px;
     font-weight: 500;
 }
+
+
+#concerta_logo{
+    position: relative;
+    bottom: 3px;
+}

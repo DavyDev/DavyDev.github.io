@@ -123,3 +123,8 @@ nav.navbar-transparente {
 table{
     text-align: center;
 }
+
+#concerta_logo{
+    position: relative;
+    bottom: 3px;
+}

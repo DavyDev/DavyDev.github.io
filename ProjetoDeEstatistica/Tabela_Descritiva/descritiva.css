@@ -149,7 +149,10 @@ span{
 }
 
 
-
+#concerta_logo{
+    position: relative;
+    bottom: 3px;
+}
 
 
 
