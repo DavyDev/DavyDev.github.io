@@ -151,12 +151,11 @@ span{
 
 #concerta_logo{
     position: relative;
-    bottom: 3px;
+    bottom: 8px;
 }
 
 
-
-/* // Dispositivos extra small (telefones em modo retrato, com menos de 576px) */
+/* // Dispositivos extra small (telefones em modo retrato, com menos de 576px)
 @media (max-width: 575.98px) { 
     .font_customizada {
         font-family: 'MADE Evolve Sans EVO';
@@ -164,7 +163,7 @@ span{
         color: #fff;
 
     }
- }
+ } */
 
 /* // Dispositivos small (telefones em modo paisagem, com 576px ou mais) */
 @media (min-width: 576px) and (max-width: 767.98px) {  }
